@@ -1,7 +1,61 @@
 package com.jpa.application.jpa.application;
 
 public class Company {
+    int id;
     String name;
-    String duration;
+    int duration;    //IN MONTHS
+    String profile;
+    int stipend;
+    boolean workFromHome;
 
+    public Company() {
+    }
+
+    public Company(String name, int duration, String profile, int stipend, boolean workFromHome) {
+        this.name = name;
+        this.duration = duration;
+        this.profile = profile;
+        this.stipend = stipend;
+        this.workFromHome = workFromHome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+
+    public int getDuration() {
+        return duration;
+    }
+
+
+    public String getProfile() {
+        return profile;
+    }
+
+
+    public int getStipend() {
+        return stipend;
+    }
+
+
+    public boolean isWorkFromHome() {
+        return workFromHome;
+    }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", duration=" + duration +
+                ", profile='" + profile + '\'' +
+                ", stipend=" + stipend +
+                ", workFromHome=" + workFromHome +
+                '}';
+    }
 }
