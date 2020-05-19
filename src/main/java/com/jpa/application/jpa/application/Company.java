@@ -1,11 +1,19 @@
 package com.jpa.application.jpa.application;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Company {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     int id;
     String name;
     int duration;    //IN MONTHS
     String profile;
-    int stipend;
+    int stipend;    //CAN BE 0
     boolean workFromHome;
 
     public Company() {
