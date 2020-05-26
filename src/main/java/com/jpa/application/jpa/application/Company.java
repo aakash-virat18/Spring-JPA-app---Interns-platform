@@ -66,4 +66,5 @@ public class Company {
                 ", workFromHome=" + workFromHome +
                 '}';
     }
+
 }
