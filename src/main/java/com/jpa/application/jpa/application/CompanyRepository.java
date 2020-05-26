@@ -7,5 +7,6 @@ import java.util.List;
 public interface CompanyRepository extends CrudRepository<Company,Integer> {
 
     Company findById(int id);
+    List<Company> findAll();
     List<Company> findByDuration(int duration);
 }
