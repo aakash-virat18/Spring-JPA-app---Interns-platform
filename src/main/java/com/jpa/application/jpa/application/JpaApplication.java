@@ -8,9 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JpaApplication{
 
-	@Autowired
-	private CompanyRepository companyRepository;
-
 	public static void main(String[] args) {
 		SpringApplication.run(JpaApplication.class, args);
 	}

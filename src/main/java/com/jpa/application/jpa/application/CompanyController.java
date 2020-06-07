@@ -1,8 +1,8 @@
 package com.jpa.application.jpa.application;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
@@ -26,26 +26,35 @@ public class CompanyController {
     }
 
     @GetMapping("/company/{id}")
-    public Company getCompanyById(@PathVariable(value = "id") int id) throws CompanyNotFoundException
+    public Company getCompanyById(@PathVariable(value = "id") int id)
     {
-            Company company = repo.findById(id);
-            if (company==null)
-            {
-                try{
-                    throw new CompanyNotFoundException(id);
-                }
-                catch(CompanyNotFoundException e)
-                {
-                    System.out.println(e);
-                }
-            }
-            return company;
+            return repo.findById(id);
     }
 
     @PostMapping("/company")
     @ResponseStatus(HttpStatus.CREATED)
     public Company addCompany(@RequestBody Company company) {
         return repo.save(company);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteStudent(@PathVariable(value = "id") int id) {
+        repo.deleteById(id);
+    }
+
+    @PutMapping("/company/{id}")
+    public ResponseEntity<Object> updateStudent(@RequestBody Company company, @PathVariable int id) {
+
+        Optional<Company> companyRepo = Optional.ofNullable(repo.findById(id));
+
+        if (!companyRepo.isPresent())
+            return ResponseEntity.notFound().build();
+
+        company.setId(id);
+
+        repo.save(company);
+
+        return ResponseEntity.noContent().build();
     }
 
 

@@ -50,6 +50,9 @@ public class Company {
         return stipend;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public boolean isWorkFromHome() {
         return workFromHome;
